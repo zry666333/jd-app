@@ -15,3 +15,12 @@
   3. 对于父组件声明的类名，在子组件内，CSS Module 是不处理的，想用必须显示调用类名($style.类名)，而使用了 scoped 的因为是命名空间的方式，所以子组件依然有效。
 
 大家如有疑问欢迎补充。
+
+**2. 为啥我们的项目中没有用到 render 函数？**
+
+虽然 Vue 在高版本中借鉴了 React 的写法支持了 render 函数，但是大多数项目不需要这样做。关于 render 函数请先看官方的解释 [render函数](https://cn.vuejs.org/v2/guide/render-function.html)。
+
+在此也给大家做下较容易理解的解释：
+
+1. Vue 可以使用 template 或者 render 函数管理 HTML 内容，而 template 是常规的做法，因为 render 对开发者的要求比较高，需要对 Vue 的 API 非常了解，不然弄巧成拙。
+2. 使用 template 所见即所得，再结合预编译工具更容易开发和调试、用最简单的方式完成任务不是很好吗？也更适合团队的需要。
