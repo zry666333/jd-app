@@ -24,3 +24,26 @@
 
 1. Vue 可以使用 template 或者 render 函数管理 HTML 内容，而 template 是常规的做法，因为 render 对开发者的要求比较高，需要对 Vue 的 API 非常了解，不然弄巧成拙。
 2. 使用 template 所见即所得，再结合预编译工具更容易开发和调试、用最简单的方式完成任务不是很好吗？也更适合团队的需要。
+
+**3. Atom 常用插件**
+
+1. Emmet，用来快速生成HTML片段，比如输入ul>li*3可以快速生成
+
+<code>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</code>
+
+[详细地址](https://atom.io/packages/emmet)，[Emmet教程](https://docs.emmet.io/cheat-sheet/)
+
+2. Snippets， 用来处理代码片段的模板输出，[详细地址](https://atom.io/packages/snippets)
+3. Tree View，文件浏览器，[详细地址](https://atom.io/packages/tree-view)
+4. file icons，文件识别图标，使用这个插件会让你的编辑器显示对应的图标，[详细地址](https://atom.io/packages/file-icons)
+5. language-javascript-jsx，jsx语法高亮 ，[详细地址](https://atom.io/packages/language-javascript-jsx)
+6. language-vue，vue语法高亮，[详细地址](https://atom.io/packages/language-vue)
+7. linter-eslint，eslint插件，[详细地址](https://atom.io/packages/linter-eslint)
+8. vue-snippets，vue代码片段，[详细地址](https://atom.io/packages/vue-snippets)
+9. pigments，颜色显示器，[详细地址](https://atom.io/packages/pigments)
