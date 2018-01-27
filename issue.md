@@ -22,20 +22,20 @@
 
 在此也给大家做下较容易理解的解释：
 
-1. Vue 可以使用 template 或者 render 函数管理 HTML 内容，而 template 是常规的做法，因为 render 对开发者的要求比较高，需要对 Vue 的 API 非常了解，不然弄巧成拙。
-2. 使用 template 所见即所得，再结合预编译工具更容易开发和调试、用最简单的方式完成任务不是很好吗？也更适合团队的需要。
+- Vue 可以使用 template 或者 render 函数管理 HTML 内容，而 template 是常规的做法，因为 render 对开发者的要求比较高，需要对 Vue 的 API 非常了解，不然弄巧成拙。
+- 使用 template 所见即所得，再结合预编译工具更容易开发和调试、用最简单的方式完成任务不是很好吗？也更适合团队的需要。
 
 **3. Atom 常用插件**
 
 1. Emmet，用来快速生成HTML片段，比如输入ul>li*3可以快速生成
 
-<code>
+<pre>
   <ul>
     <li></li>
     <li></li>
     <li></li>
   </ul>
-</code>
+</pre>
 
 [详细地址](https://atom.io/packages/emmet)，[Emmet教程](https://docs.emmet.io/cheat-sheet/)
 
