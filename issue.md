@@ -29,13 +29,13 @@
 
 1. Emmet，用来快速生成HTML片段，比如输入ul>li*3可以快速生成
 
-<pre>
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</pre>
+```html
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+```
 
 [详细地址](https://atom.io/packages/emmet)，[Emmet教程](https://docs.emmet.io/cheat-sheet/)
 
