@@ -47,3 +47,19 @@
 7. linter-eslint，eslint插件，[详细地址](https://atom.io/packages/linter-eslint)
 8. vue-snippets，vue代码片段，[详细地址](https://atom.io/packages/vue-snippets)
 9. pigments，颜色显示器，[详细地址](https://atom.io/packages/pigments)
+
+**4. px2rem-loader的参数配置问题**
+
+有的同学对px2rem-loader的参数配置有疑问，我们一共使用了2个参数 remUnit 和 remPrecision 。第一个表示默认的 html 的 fontSize，第二个是 px 转 rem 后小数精度。那为什么我把 remUnit 默认设置为 40 呢？
+
+整个自适应方案分成两部分：
+
+1、 viewport 自动计算并生成 viewport 。
+
+2、 px2rem-loader 把 css 文件中 px 转换成 rem 。
+
+其中 px2rem-loader 对 remUnit 的默认值是 75 。viewport 的计算是以 iphone 5s的设计尺寸来计算的。所以按照 ihpone 5s 的设计尺寸算出来 html 的 fontSize 是 40px。我们需要让 px2rem-loader 的基础单位是 40 。
+
+如果我的设计尺寸变了怎么办？比如我是 iphone 6 。
+
+很简单，现有的项目直接在Chrome模拟器选择 iphone 6，查看下 html 的 fontSize 是多少，把那个值设置到 remUnit。就这么简单，神奇不神奇。 
