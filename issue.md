@@ -62,4 +62,4 @@
 
 如果我的设计尺寸变了怎么办？比如我是 iphone 6 。
 
-很简单，现有的项目直接在Chrome模拟器选择 iphone 6，查看下 html 的 fontSize 是多少，把那个值设置到 remUnit。就这么简单，神奇不神奇。 
+很简单，现有的项目直接在Chrome模拟器选择 iphone 6，查看下 html 的 fontSize 是多少，把那个值设置到 remUnit，然后去 viewport 把 320 改成对应的值就好了。就这么简单，神奇不神奇。 
