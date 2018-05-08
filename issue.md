@@ -62,12 +62,22 @@
 
 如果我的设计尺寸变了怎么办？比如我是 iphone 6 。
 
-很简单，现有的项目直接在Chrome模拟器选择 iphone 6，查看下 html 的 fontSize 是多少，把那个值设置到 remUnit，然后去 viewport 把 320 改成对应的值就好了。就这么简单，神奇不神奇。 
+很简单，现有的项目直接在Chrome模拟器选择 iphone 6，查看下 html 的 fontSize 是多少，把那个值设置到 remUnit，然后去 viewport 把 320 改成对应的值就好了。就这么简单，神奇不神奇。
 
-**5. 导航的选中问题 **
+**5. 导航的选中问题**
 
 之前为了保持和京东的一致，在设计上也是采用的静态导航，但是因为图片不好裁剪，没有细致的说明，现在补充下：
 
 导航这块其实非常简单，有两种思路：
 
-1、使用课程中的img方法，每个router-link下放置两个img标签（课程中用了一个），两个
+1、 使用课程中的 img 方法。每个 router-link 下放置两个 img 标签（课程中用了一个），两个 img 分别代表未激活的状态图片、激活的状态图片，要知道 router-link 本身提供了激活状态的，即用户点击之后会在当前的链接上增加两个类 router-link-exact-active router-link-active (这两个类有什么区别另说)。所以只要结合 css 的 nth-child  就可以很容易的对应显示两种不同的图片。
+
+2、 使用背景图的方式。如果觉得 img 标签的方式很麻烦，可以结合两个 router-link-exact-active router-link-active 切换链接的背景图也是不错的选择。
+
+**6. router-link-exact-active 和 router-link-active 的区别**
+
+这块的内容其实官方文档说的很清楚，[router-link](https://router.vuejs.org/zh-cn/api/router-link.html)，仔细看 exact 选项，默认是 false。也就是说默认不是精确匹配的。
+
+>>"是否激活" 默认类名的依据是 inclusive match （全包含匹配）。 举个例子，如果当前的路径是 /a 开头的，那么 <code><router-link to="/a"> </code>也会被设置 CSS 类名。按照这个规则，每个路由都会激活<code><router-link to="/"></code>
+
+这是官方的原话，我给翻译下：默认的 router-link 是非精确匹配，当你的路由是 /a 时，除了 /a 的链接被激活，链接为 / 的也被激活，那这时候的表现是 /a 的链接有两个类，一个是 router-link-exact-active，一个是 router-link-active。而 / 的链接只有 router-link-active 类。如果开启了 exact 模式，/ 的链接不会被激活。
