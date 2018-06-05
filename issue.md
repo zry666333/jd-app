@@ -81,3 +81,7 @@
 >>"是否激活" 默认类名的依据是 inclusive match （全包含匹配）。 举个例子，如果当前的路径是 /a 开头的，那么 <code><router-link to="/a"> </code>也会被设置 CSS 类名。按照这个规则，每个路由都会激活<code><router-link to="/"></code>
 
 这是官方的原话，我给翻译下：默认的 router-link 是非精确匹配，当你的路由是 /a 时，除了 /a 的链接被激活，链接为 / 的也被激活，那这时候的表现是 /a 的链接有两个类，一个是 router-link-exact-active，一个是 router-link-active。而 / 的链接只有 router-link-active 类。如果开启了 exact 模式，/ 的链接不会被激活。
+
+**7. windows下安装nvm无法切换node版本 **
+
+查看这篇博客[nvm安装显示node无效](https://blog.csdn.net/Quincylk/article/details/78249235)
