@@ -86,3 +86,5 @@
 **7. windows下安装nvm无法切换node版本**
 
 查看这篇博客[nvm安装显示node无效](https://blog.csdn.net/Quincylk/article/details/78249235)
+
+**8. 如果在项目中使用多倍图怎么办？**
