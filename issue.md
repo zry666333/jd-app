@@ -88,3 +88,5 @@
 查看这篇博客[nvm安装显示node无效](https://blog.csdn.net/Quincylk/article/details/78249235)
 
 **8. 如果在项目中使用多倍图怎么办？**
+
+多倍图指的是不同像素比的设备使用不同分辨率的图片，比如 img:src=bg1.png img:src=bg1@2x.png等。这种方案在前两年比较流行，主要是为了达到视觉效果，也为了节省流量，对于目前来说项目开发都使用2倍图片就可以了。如果仍想使用多倍图方案，可以参考 [retinajs](http://imulus.github.io/retinajs/)

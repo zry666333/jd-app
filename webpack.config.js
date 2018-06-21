@@ -36,7 +36,7 @@ module.exports = env => {
       quiet: true
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.html$/,
           loader: 'html-loader'
@@ -71,6 +71,7 @@ module.exports = env => {
         'vue$': 'vue/dist/vue.esm.js'
       }
     },
+    mode:'production',
     plugins,
     output: {
       filename: '[name].min.js',
