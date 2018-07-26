@@ -3,6 +3,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+
 module.exports = env => {
   if (!env) {
     env = {}
@@ -11,7 +15,8 @@ module.exports = env => {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({template: './app/views/index.html'}),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new VueLoaderPlugin()
   ];
   if(env.production){
     plugins.push(
@@ -39,27 +44,43 @@ module.exports = env => {
       rules: [
         {
           test: /\.html$/,
-          loader: 'html-loader'
+          use: ['cache-loader', 'html-loader']
         }, {
           test: /\.vue$/,
-          loader: 'vue-loader',
-          options: {
-            cssModules: {
-              localIdentName: '[path][name]---[local]---[hash:base64:5]',
-              camelCase: true
-            },
-            extractCSS: true,
-            loaders: env.production?{
-              css: ExtractTextPlugin.extract({use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8', fallback: 'vue-style-loader'}),
-              scss: ExtractTextPlugin.extract({use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader', fallback: 'vue-style-loader'})
-            }:{
-              css: 'vue-style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8',
-              scss: 'vue-style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader'
-            }
-          }
+          use: [
+            'cache-loader',
+            'vue-loader'
+          ]
         }, {
           test: /\.scss$/,
-          loader: 'style-loader!css-loader!sass-loader'
+          use:[
+            'vue-style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                // 开启 CSS Modules
+                modules: true,
+                // 自定义生成的类名
+                localIdentName: '[local]_[hash:base64:8]'
+              }
+            }, {
+              loader: 'px2rem-loader',
+              // options here
+              options: {
+                remUni: 40,
+                remPrecision: 8
+              }
+            },
+            'sass-loader'
+          ]
+        },{
+          test: /\.css$/,
+          use: [
+              process.env.NODE_ENV !== 'production' ?
+              'vue-style-loader' :
+              MiniCssExtractPlugin.loader,
+              'css-loader'
+            ]
         }
       ]
     },

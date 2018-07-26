@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
     <div :class="$style.home">
         <h1>Home</h1>
     </div>
