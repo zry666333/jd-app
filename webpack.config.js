@@ -67,7 +67,7 @@ module.exports = env => {
               loader: 'px2rem-loader',
               // options here
               options: {
-                remUni: 40,
+                remUnit: 40,
                 remPrecision: 8
               }
             },
