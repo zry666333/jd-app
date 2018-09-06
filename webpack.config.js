@@ -11,27 +11,29 @@ module.exports = env => {
   if (!env) {
     env = {}
   }
-  let plugins=[
+  let plugins = [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({template: './app/views/index.html'}),
+    new HtmlWebpackPlugin({
+      template: './app/views/index.html'
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin()
   ];
-  if(env.production){
+  if (env.production) {
     plugins.push(
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: '"production"'
         }
       }),
-      new ExtractTextPlugin("style.css", {ignoreOrder: true})
+      new ExtractTextPlugin("style.css", {
+        ignoreOrder: true
+      })
     )
   }
   return {
-    entry: {
-      app: './app/js/main.js'
-    },
+    entry: ['./app/js/viewport.js', './app/js/main.js'],
     devServer: {
       contentBase: './dist',
       hot: true,
@@ -41,31 +43,29 @@ module.exports = env => {
       quiet: true
     },
     module: {
-      rules: [
-        {
-          test: /\.html$/,
-          use: ['cache-loader', 'html-loader']
-        }, {
-          test: /\.vue$/,
+      rules: [{
+        test: /\.html$/,
+        use: ['cache-loader', 'html-loader']
+      }, {
+        test: /\.vue$/,
+        use: [
+          'cache-loader',
+          'vue-loader'
+        ]
+      }, {
+        test: /\.scss$/,
+        oneOf: [{
+          resourceQuery: /module/,
           use: [
-            'cache-loader',
-            'vue-loader'
-          ]
-        }, {
-          test: /\.scss$/,
-          use:[
             'vue-style-loader',
             {
               loader: 'css-loader',
               options: {
-                // 开启 CSS Modules
                 modules: true,
-                // 自定义生成的类名
-                localIdentName: '[local]_[hash:base64:8]'
+                localIdentName: '[local]_[hash:base64:5]'
               }
             }, {
               loader: 'px2rem-loader',
-              // options here
               options: {
                 remUnit: 40,
                 remPrecision: 8
@@ -73,16 +73,20 @@ module.exports = env => {
             },
             'sass-loader'
           ]
-        },{
-          test: /\.css$/,
+        }, {
           use: [
-              process.env.NODE_ENV !== 'production' ?
-              'vue-style-loader' :
-              MiniCssExtractPlugin.loader,
-              'css-loader'
-            ]
-        }
-      ]
+            'vue-style-loader',
+            'css-loader', {
+              loader: 'px2rem-loader',
+              options: {
+                remUnit: 40,
+                remPrecision: 8
+              }
+            },
+            'sass-loader'
+          ]
+        }],
+      }]
     },
     resolve: {
       extensions: [
@@ -92,7 +96,7 @@ module.exports = env => {
         'vue$': 'vue/dist/vue.esm.js'
       }
     },
-    mode:'production',
+    mode: 'production',
     plugins,
     output: {
       filename: '[name].min.js',
