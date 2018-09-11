@@ -86,6 +86,9 @@ module.exports = env => {
             'sass-loader'
           ]
         }],
+      }, {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader']
       }]
     },
     resolve: {
