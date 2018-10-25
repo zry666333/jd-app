@@ -99,7 +99,7 @@ module.exports = env => {
         'vue$': 'vue/dist/vue.esm.js'
       }
     },
-    mode: 'production',
+    mode: 'development',
     plugins,
     output: {
       filename: '[name].min.js',
