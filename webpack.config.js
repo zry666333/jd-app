@@ -38,7 +38,7 @@ module.exports = env => {
       contentBase: './dist',
       hot: true,
       compress: true,
-      port: 9000,
+      port: 8080,
       clientLogLevel: "none",
       quiet: true
     },
